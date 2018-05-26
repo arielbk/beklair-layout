@@ -1,0 +1,445 @@
+/* Flexbox and CSS grid system would be really helpful in this layout, but I want some practice without using them first */
+
+@import 'normalize.css';
+@import url('https://fonts.googleapis.com/css?family=Open+Sans|Roboto+Slab:400,700');
+
+/* BASE STYLES */
+*, *::before, *::after {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+  color: #fff;
+  font: 400 16px/150% 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 1150px;
+}
+
+a {
+  text-decoration: none;
+  transition: 0.2s;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  font: 700 36px/150% 'Roboto Slab', serif;
+  text-transform: uppercase;
+}
+
+h4, h5, h6 {
+  display: inline-block;
+  color: #000;
+  font-weight: 400;
+  font-size: 24px;
+}
+
+.muted {
+  margin: 0;
+  color: #999;
+}
+
+.group {
+  text-align: left;
+  width: 100%;
+  margin-top: 55px;
+}
+
+.clearfix,
+.group::after {
+  content: "";
+  clear:both;
+  display: table;
+}
+
+.group-left {
+  display: inline-block;
+  float: left;
+  padding-right: 22px;
+}
+
+.group-right {
+  display: inline-block;
+  float: right;
+  padding-left: 22px;
+}
+
+/* Top to bottom styling starts */
+
+#header-hero {
+  /* this is effective because of a CSS quirk in which gradients are treated as another image by the browser, inspired by this article: https://medium.com/@tsmith18256/creating-a-css-image-overlay-with-one-element-205c66100d8f */
+  background: linear-gradient(to right, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('../images/photo1.jpeg');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100vh;
+  min-height: 600px;
+}
+
+#header-icons {
+  text-align: right;
+  padding: 11px 0;
+  letter-spacing: 1.2em;
+}
+
+#header-icons a {
+  color: #fff;
+}
+
+#header-icons a:hover {
+  color: #777;
+}
+
+#header-strip {
+  width: 100%;
+  background: rgba(0,0,0,0.5);
+  height: 4rem;
+}
+
+#header-strip a {
+  color: #fff;
+}
+
+#header-strip h1 {
+  display: inline-block;
+  line-height: 4rem;
+}
+
+#header-nav {
+  float: right;
+}
+
+#header-nav ul {
+  margin: 0;
+  padding: 0;
+}
+
+#header-nav ul ul {
+  position: absolute;
+}
+
+#header-nav ul li {
+  list-style: none;
+  float: left;
+  margin: 0;
+  line-height: 4.5rem;
+  text-align: center;
+}
+
+#header-nav li a {
+  display: block;
+  margin:0;
+  padding:0 22px;
+}
+
+#header-nav li.last-li a {
+  padding: 0 0 0 22px;
+}
+
+#header-nav li a:hover {
+  color: #a09159;
+}
+
+#header-nav li li {
+  display: none;
+  z-index: 100;
+  background: rgba(0,0,0,0.5);
+  border-bottom: 1px solid #333;
+  float: none;
+}
+
+#header-nav li:hover li {
+  display: block;
+}
+
+#header-nav li li a:hover {
+  background: #000;
+  color: #a09159;
+}
+
+#header-nav .selected a {
+  color: #a09159;
+}
+
+#header-titles {
+  padding-top: 12%;
+  text-align: center;
+}
+
+.lead {
+  font: 400 18px/150% 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  letter-spacing: 0.1em;
+}
+
+#header-titles h2 {
+  font-size: 3em;
+  text-shadow: 2px 2px 4px #000;
+}
+
+a.btn-header {
+  display: inline-block;
+  background: rgba(0,0,0,0.5);
+  width: 200px;
+  border: 1px solid #fff;
+  color: #fff;
+  padding: 12px;
+  margin: 7% 22px;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+a.btn-header:hover {
+  background-color: #a09159;
+  color: #000;
+}
+
+a.btn {
+  text-align: center;
+  width: 170px;
+  display: inline-block;
+  background: #bc9814;
+  border: 2px solid #bc9814;
+  color: #fff;
+  padding: 12px;
+  text-decoration: none;
+  text-transform: uppercase;
+  margin-top: 44px;
+}
+
+a.btn:hover {
+  border: 2px solid #ddd;
+  background: #fff;
+  color: #000;
+}
+
+.light-section {
+  color: #000;
+  text-align: center;
+  padding: 44px 0 88px 0;
+  background: #fff;
+  width: 100%;
+}
+
+.dark-section {
+  color: #fff;
+  text-align: center;
+  padding: 88px 0;
+  background: #000;
+  width: 100%;
+}
+
+.dark-section h4 {
+  color: #fff;
+}
+
+.dark-section .muted {
+  color:;
+}
+
+.half {
+  width: 50%;
+  margin: 0;
+  display: inline-block
+}
+
+#img-section-1 {
+  background: linear-gradient(to right, rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('../images/photo4.jpg');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+/* Revisit this and use Flexbox, it is the ideal use case for it */
+
+.quarter {
+  vertical-align: top;
+  text-align: center;
+  margin: 0;
+  padding: 0 1%;
+  width: 25%;
+  display: inline-block;
+}
+
+
+.quarter:first-child {
+  padding: 0 1.5% 0 0;
+}
+
+.quarter:last-child {
+  padding: 0 0 0 1.5%;
+}
+
+.enlarge {
+  width: 100%;
+  text-align: center;
+  font-size: 6em;
+  margin-bottom: 44px;
+}
+
+.clients {
+  color: #777;
+  padding: 44px 0;
+}
+
+#img-section-2 {
+  background: linear-gradient(to right, rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('../images/photo5.jpg');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.third {
+  vertical-align: top;
+  text-align: center;
+  margin: 0;
+  padding: 0 1%;
+  width: 33.333%;
+  display: inline-block;
+}
+
+.third:first {
+  padding: 0 2% 0 0;
+}
+
+.third:last {
+  padding: 0 0 0 2%;
+}
+
+
+
+#main-footer {
+  background: linear-gradient(to top, rgba(0,0,0,0.9), rgba(0,0,0,0.9)), url('../images/photo7.jpg');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding: 44px 0 88px 0;
+}
+
+#main-footer .third:first-child {
+  text-align: left;
+}
+
+#footer-icons {
+  font-size: 3em;
+  letter-spacing: .3em;
+  display: inline-block;
+  width: 100%;
+}
+
+#footer-icons a {
+  color: #fff;
+}
+
+#footer-icons a:hover {
+  color: #777;
+}
+
+#main-footer p.third {
+  font-size: 0.8em;
+}
+
+#footer-nav {
+  float: right;
+}
+
+#footer-nav ul {
+  margin: 0;
+  padding: 0;
+}
+
+#footer-nav ul li {
+  list-style: none;
+  float: left;
+  margin: 0;
+  line-height: 4.5rem;
+  text-align: center;
+  line-height: 1em;
+}
+
+#footer-nav li a {
+  display: block;
+  margin:0;
+  padding:0 22px;
+  color: #fff;
+}
+
+#footer-nav li.last-li a {
+  padding: 0 0 0 22px;
+}
+
+#footer-nav li a:hover {
+  color: #777;
+}
+
+
+
+
+
+
+
+
+@media (max-width: 870px) {
+  .quarter {
+    width: 50%;
+    margin-top: 44px;
+  }
+  .third {
+    width: 100%;
+    margin-bottom: 34px;
+    text-align: center;
+  }
+  #main-footer .third:first-child {
+    text-align: center;
+  }
+  #footer-nav {
+    display: block;
+    text-align: center;
+    margin-top: 34px;
+  }
+
+}
+
+@media (max-width: 1200px) {
+  .container {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+  #footer-icons {
+    font-size: 2em;
+  }
+  #footer-nav {
+    float: none;
+  }
+  #footer-nav ul {
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+  }
+  #footer-nav li a {
+    padding:0 4px;
+  }
+  #footer-nav li a:last-child {
+    padding: 0 0 0 4px;
+  }
+  #footer-nav li a::before {
+    content: '| ';
+  }
+}
+
+@media (max-width: 700px) {
+  .half {
+    width: 100%;
+    margin-top: 44px;
+    text-align: center;
+  }
+}
+
+@media (max-width: 600px) {
+  .quarter {
+    width: 100%;
+  }
+}
